@@ -27,7 +27,7 @@ namespace RestApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<IEnumerable<Command>> GetAllCommandById(int id)
+        public ActionResult<IEnumerable<Command>> GetAllCommandById(int id) //czy tu jest All?
         {
             var commandItem = _repository.GetCommandById(id);
             return Ok(commandItem);
