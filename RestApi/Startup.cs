@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using RestApi.Data;
 
 namespace RestApi
 {
@@ -26,6 +27,13 @@ namespace RestApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            /*
+             Transient objects are always different; a new instance is provided to every controller and every service.
+             Scoped objects are the same within a request, but different across different requests.
+             Singleton objects are the same for every object and every request.
+            */
+            services.AddScoped<ICommanderRepository, MockCommanderRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
