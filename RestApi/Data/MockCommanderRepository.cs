@@ -11,7 +11,7 @@ namespace RestApi.Data
         public IEnumerable<Command> GetAllCommands()
         {
             var commands = new List<Command>();
-            for(var i = 0; i < 4; ++i)
+            for (var i = 0; i < 4; ++i)
             {
                 commands.Add(new Command
                 {
@@ -22,7 +22,7 @@ namespace RestApi.Data
                 });
             }
             return commands;
-      }
+        }
 
         public Command GetCommandById(int id)
         {

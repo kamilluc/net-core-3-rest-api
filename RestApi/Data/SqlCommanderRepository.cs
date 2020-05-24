@@ -16,7 +16,8 @@ namespace RestApi.Data
 
         public IEnumerable<Command> GetAllCommands()
         {
-            return _context.Commands.ToList();        }
+            return _context.Commands.ToList();
+        }
 
         public Command GetCommandById(int id)
         {
