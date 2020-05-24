@@ -13,6 +13,10 @@ namespace RestApi.Profiles
         public CommandsProfie()
         {
             CreateMap<Command, CommandReadDto>();
+            CreateMap<CommandCreateDto, Command>();
+            CreateMap<CommandUpdateDto, Command>();
+            CreateMap<Command, CommandUpdateDto>();
+
         }
     }
 }

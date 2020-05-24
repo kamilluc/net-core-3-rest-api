@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using RestApi.Data;
+using Newtonsoft.Json.Serialization;
 
 namespace RestApi
 {
@@ -29,7 +30,11 @@ namespace RestApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<CommanderContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("CommanderConnection")));
-            services.AddControllers();
+
+            services.AddControllers().AddNewtonsoftJson(s =>
+            {
+                s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             /*
              Transient objects are always different; a new instance is provided to every controller and every service.
